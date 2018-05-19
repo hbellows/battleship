@@ -12,10 +12,18 @@ class ComputerTest < Minitest::Test
     assert_equal 'D4', computer.coords[15]
   end
 
-  def test_it_can_choose_a_random_coordinate
+  def test_it_can_choose_first_ship_coordinate
     computer = Computer.new
-    ship_coords = computer.ship_placement
 
-    assert_includes ship_coords, computer.coords
+    computer.ship_first_coord
+    assert_includes computer.coords, computer.ship_coords_2unit[0]
+  end
+
+  def test_it_can_choose_second_ship_coordinate
+    computer = Computer.new
+
+    computer.ship_first_coord
+    computer.ship_second_coord
+    assert_includes computer.coords, computer.ship_coords_2unit[1]
   end
 end
