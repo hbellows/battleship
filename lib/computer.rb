@@ -9,8 +9,6 @@ class Computer
 
   def ship_placement
     ship_coords = []
-    @coords.each do |index|
-      ship_coord << index.sample
-    end
+    ship_coords << @coords.sample
   end
 end
