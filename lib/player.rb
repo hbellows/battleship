@@ -64,8 +64,8 @@ class Player
   end
 
   def validate_3rd_input(input)
-    # needs to validate input is both on the board (validate_1st_input) and
-    # is not in the @ship_2_unit array
+    # needs to validate input is on the board (validate_1st_input),
+    # AND is NOT in the @ship_2_unit array
     input = input.upcase
     if input.validate_1st_input
     end
@@ -80,6 +80,12 @@ class Player
     end
   end
 
+  def validate_4th_input
+    # needs to validate the input is on the board (validate_1st_input),
+    # AND is NOT in the @ship_2_unit array (validate_3rd_input),
+    # AND is in the second_coord hash/array
+  end
+
   def second_coord_3_unit(input)
     coord = @ship_3_unit[0]
     coord_2 = input
@@ -88,6 +94,12 @@ class Player
     else
       @ship_3_unit << coord_2
     end
+  end
+
+  def validate_5th_input
+    # needs to validate the input is on the board (validate_1st_input)
+    # AND is NOT in the @ship_2_unit array (validate_3rd_input)
+    # AND is in the @third_coord hash/array
   end
 
   def third_coord_3_unit
@@ -99,6 +111,4 @@ class Player
       @ship_3_unit << coord_3
     end
   end
-
-
 end
