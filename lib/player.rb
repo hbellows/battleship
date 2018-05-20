@@ -32,4 +32,44 @@ class Player
               }
   end
 
+  def first_coord_2_unit
+    coord_1 = @board.sample
+    @ship_2_unit << coord_1
+  end
+
+  def second_coord_2_unit
+    coord = @ship_2_unit[0]
+    coord_2 = @second_coord[coord].sample
+    @ship_2_unit << coord_2
+  end
+
+  def first_coord_3_unit
+    coord_1 = @board.sample
+    if @ship_2_unit.include?(coord_1)
+      first_coord_3_unit
+    else
+      @ship_3_unit << coord_1
+    end
+  end
+
+  def second_coord_3_unit
+    coord = @ship_3_unit[0]
+    coord_2 = @second_coord[coord].sample
+    if @ship_2_unit.include?(coord_2)
+      second_coord_3_unit
+    else
+      @ship_3_unit << coord_2
+    end
+  end
+
+  def third_coord_3_unit
+    coord = @ship_3_unit.sort
+    require "pry"; binding.pry if @third_coord[coord].nil?
+    coord_3 = @third_coord[coord].sample
+    if @ship_2_unit.include?(coord_3)
+      third_coord_3_unit
+    else
+      @ship_3_unit << coord_3
+    end
+  end
 end
