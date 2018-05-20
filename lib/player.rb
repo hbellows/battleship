@@ -1,11 +1,13 @@
 class Player
-  attr_reader :board, :ship_2_unit, :ship_3_unit
+  attr_reader :board, :input, :ship_2_unit, :ship_3_unit
 
   def initialize
     @board = ['A1', 'A2', 'A3', 'A4',
               'B1', 'B2', 'B3', 'B4',
               'C1', 'C2', 'C3', 'C4',
               'D1', 'D2', 'D3', 'D4']
+
+    @input = input
 
     @ship_2_unit = []
 
@@ -32,19 +34,45 @@ class Player
               }
   end
 
-  def first_coord_2_unit
-    coord_1 = @board.sample
-    @ship_2_unit << coord_1
+  def validate_1st_input(input)
+    input = input.upcase
+    if @board.include?(input)
+      return true
+    else
+      return false
+    end
   end
 
-  def second_coord_2_unit
-    coord = @ship_2_unit[0]
-    coord_2 = @second_coord[coord].sample
-    @ship_2_unit << coord_2
+  def first_coord_2_unit(input)
+    coord_1 = input
+    @ship_2_unit << coord_1 if validate_1st_input(input)
   end
 
-  def first_coord_3_unit
-    coord_1 = @board.sample
+  def validate_2nd_input(input)
+    new_input = input.upcase
+    coord_1 = @ship_2_unit[0]
+    if @second_coord[coord_1].include?(new_input)
+      return true
+    else
+      return false
+    end
+  end
+
+  def second_coord_2_unit(input)
+    coord_2 = input
+    @ship_2_unit << coord_2 if validate_2nd_input(input)
+  end
+
+  def validate_3rd_input(input)
+    # needs to validate input is on the board (validate_1st_input),
+    # AND is NOT in the @ship_2_unit array
+    input = input.upcase
+    if input.validate_1st_input
+    end
+  end
+
+  def first_coord_3_unit(input)
+    coord_1 = input.upcase
     if @ship_2_unit.include?(coord_1)
       first_coord_3_unit
     else
@@ -52,9 +80,15 @@ class Player
     end
   end
 
-  def second_coord_3_unit
+  def validate_4th_input
+    # needs to validate the input is on the board (validate_1st_input),
+    # AND is NOT in the @ship_2_unit array (validate_3rd_input),
+    # AND is in the second_coord hash/array
+  end
+
+  def second_coord_3_unit(input)
     coord = @ship_3_unit[0]
-    coord_2 = @second_coord[coord].sample
+    coord_2 = input
     if @ship_2_unit.include?(coord_2)
       second_coord_3_unit
     else
@@ -62,9 +96,14 @@ class Player
     end
   end
 
+  def validate_5th_input
+    # needs to validate the input is on the board (validate_1st_input)
+    # AND is NOT in the @ship_2_unit array (validate_3rd_input)
+    # AND is in the @third_coord hash/array
+  end
+
   def third_coord_3_unit
     coord = @ship_3_unit.sort
-    require "pry"; binding.pry if @third_coord[coord].nil?
     coord_3 = @third_coord[coord].sample
     if @ship_2_unit.include?(coord_3)
       third_coord_3_unit
