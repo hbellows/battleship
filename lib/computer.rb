@@ -64,7 +64,7 @@ class Computer
 
   def third_coord_3_unit
     coord = @ship_3_unit.sort
-    require "pry"; binding.pry if @third_coord[coord].nil?
+    # require "pry"; binding.pry if @third_coord[coord].nil?
     coord_3 = @third_coord[coord].sample
     if @ship_2_unit.include?(coord_3)
       third_coord_3_unit
