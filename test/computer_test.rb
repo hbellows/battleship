@@ -42,12 +42,12 @@ class ComputerTest < Minitest::Test
     assert_includes comp.board, comp.ship_3_unit[1]
   end
 
-  # def test_it_can_choose_3rd_ship_coord_3_unit_ship
-  #   comp = Computer.new
-  #
-  #   comp.first_coord_3_unit
-  #   comp.second_coord_3_unit
-  #   comp.third_coord_3_unit
-  #   assert_includes
-  # end
+  def test_it_can_choose_3rd_ship_coord_3_unit_ship
+    comp = Computer.new
+
+    comp.first_coord_3_unit
+    comp.second_coord_3_unit
+    comp.third_coord_3_unit
+    assert_includes comp.board, comp.ship_3_unit[2]
+  end
 end
