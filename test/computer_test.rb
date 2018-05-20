@@ -13,17 +13,16 @@ class ComputerTest < Minitest::Test
   end
 
   def test_it_can_choose_first_ship_coordinate
-    computer = Computer.new
+    comp = Computer.new
 
-    computer.ship_first_coord
-    assert_includes computer.coords, computer.ship_coords_2unit[0]
+    comp.first_coord_2_unit
+    assert_includes comp.board, comp.first_coord_2_unit[0]
   end
 
   def test_it_can_choose_second_ship_coordinate
-    computer = Computer.new
+    comp = Computer.new
 
-    computer.ship_first_coord
-    computer.ship_second_coord
-    assert_includes computer.coords, computer.ship_coords_2unit[1]
+    comp.second_coord_2_unit
+    assert_includes comp.board, comp.second_coord_2_unit[1]
   end
 end
