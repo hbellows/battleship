@@ -1,5 +1,6 @@
 class Computer
   attr_reader :board, :ship_2_unit, :ship_3_unit
+
   def initialize
     @board = ['A1', 'A2', 'A3', 'A4',
               'B1', 'B2', 'B3', 'B4',
@@ -18,6 +19,15 @@ class Computer
                      'C3'=>['B3', 'C2', 'D3', 'C4'], 'C4'=>['B4', 'C3', 'D4'],
                      'D1'=>['C1', 'D2'], 'D2'=>['C2', 'D1', 'D3'],
                      'D3'=>['C3', 'D2', 'D4'], 'D4'=>['C4', 'D3']}
+
+    @third_coord = {['A1', 'A2']=>['A3'], ['A2', 'A3']=>['A4'],
+                    ['B1', 'B2']=>['B3'], ['B2', 'B3']=>['B4'],
+                    ['C1', 'C2']=>['C3'], ['C2', 'C3']=>['C4'],
+                    ['D1', 'D2']=>['D3'], ['D2', 'D3']=>['D4'],
+                    ['A1', 'B1']=>['C1'], ['B1', 'C1']=>['D1'],
+                    ['A2', 'B2']=>['C2'], ['B2', 'C2']=>['D2'],
+                    ['A3', 'B3']=>['C3'], ['B3', 'C3']=>['D3'],
+                    ['A4', 'B4']=>['C4'], ['B4', 'C4']=>['D4']}
   end
 
   def first_coord_2_unit
@@ -51,9 +61,12 @@ class Computer
   end
 
   def third_coord_3_unit
-    coord = @ship_3_unit[1]
-    coord_3 = @second_coord[coord].sample
-
+    coord = @ship_3_unit
+    coord_3 = @third_coord[coord].sample
+    if @ship_2_unit.include?(coord_3)
+      third_coord_3_unit
+    else
+      @ship_3_unit << coord_3
+    end
   end
-
 end
