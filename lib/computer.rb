@@ -1,5 +1,5 @@
 class Computer
-  attr_reader :coords, :ship_coords_2unit
+  attr_reader :board, :ship_2_unit, :ship_3_unit
   def initialize
     @board = ['A1', 'A2', 'A3', 'A4',
                'B1', 'B2', 'B3', 'B4',
@@ -18,7 +18,6 @@ class Computer
                      'C3'=>['B3', 'C2', 'D3', 'C4'], 'C4'=>['B4', 'C3', 'D4'],
                      'D1'=>['C1', 'D2'], 'D2'=>['C2', 'D1', 'D3'],
                      'D3'=>['C3', 'D2', 'D4'], 'D4'=>['C4', 'D3']}
-
   end
 
   def first_coord_2_unit
@@ -27,7 +26,9 @@ class Computer
   end
 
   def second_coord_2_unit
-
+    coord = @ship_2_unit[0]
+    coord_2 = @second_coord[coord].sample
+    @ship_2_unit << coord_2
   end
 
 
