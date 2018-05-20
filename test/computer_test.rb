@@ -12,18 +12,22 @@ class ComputerTest < Minitest::Test
     assert_equal 'D4', computer.board[15]
   end
 
-  def test_it_can_choose_first_ship_coordinate
+  def test_it_can_choose_1st_ship_coord
     comp = Computer.new
 
     comp.first_coord_2_unit
     assert_includes comp.board, comp.ship_2_unit[0]
   end
 
-  def test_it_can_choose_second_ship_coordinate
+  def test_it_can_choose_2nd_ship_coord
     comp = Computer.new
 
     comp.first_coord_2_unit
     comp.second_coord_2_unit
     assert_includes comp.board, comp.ship_2_unit[1]
+  end
+
+  def test_it_can_choose_3rd_ship_coord
+
   end
 end

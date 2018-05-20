@@ -2,9 +2,9 @@ class Computer
   attr_reader :board, :ship_2_unit, :ship_3_unit
   def initialize
     @board = ['A1', 'A2', 'A3', 'A4',
-               'B1', 'B2', 'B3', 'B4',
-               'C1', 'C2', 'C3', 'C4',
-               'D1', 'D2', 'D3', 'D4']
+              'B1', 'B2', 'B3', 'B4',
+              'C1', 'C2', 'C3', 'C4',
+              'D1', 'D2', 'D3', 'D4']
 
     @ship_2_unit = []
 
@@ -31,6 +31,23 @@ class Computer
     @ship_2_unit << coord_2
   end
 
+  def first_coord_3_unit
+    coord_1 = @board.sample
+    if @ship_2_unit.include?(coord_1)
+      first_coord_3_unit
+    else
+      @ship_3_unit << coord_1
+    end
+  end
 
+  def second_coord_3_unit
+    coord = @ship_3_unit[0]
+    coord_2 = @second_coord[coord].sample
+    if @ship_2_unit.include?(coord_2)
+      second_coord_3_unit
+    else
+      @ship_3_unit << coord_2
+    end
+  end
 
 end
