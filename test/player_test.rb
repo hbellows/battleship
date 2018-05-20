@@ -52,45 +52,39 @@ class PlayerTest < Minitest::Test
 
   end
 
-  def test_it_can_add_1st_ship_coord_3_unit_ship
-    skip
-    player = Player.new
-
-    player.first_coord_3_unit('D4')
-    assert_equal 'D4', player.ship_3_unit[0]
-  end
+  # def test_it_can_add_1st_ship_coord_3_unit_ship
+  #   skip
+  #   player = Player.new
+  #
+  #   player.first_coord_3_unit('D4')
+  #   assert_equal 'D4', player.ship_3_unit[0]
+  # end
 
   def test_it_can_validate_user_4th_ship_input
 
   end
 
-  def test_it_can_add_2nd_ship_coord_3_unit_ship
-    skip
-    player = Player.new
-
-    player.first_coord_3_unit('A2')
-    player.second_coord_3_unit('A1')
-    assert_equal 'A4', player.ship_3_unit[0]
-    assert_equal 'A1', player.ship_3_unit[1]
-  end
+  # def test_it_can_add_2nd_ship_coord_3_unit_ship
+  #   skip
+  #   player = Player.new
+  #
+  #   player.first_coord_3_unit('A2')
+  #   player.second_coord_3_unit('A1')
+  #   assert_equal 'A4', player.ship_3_unit[0]
+  #   assert_equal 'A1', player.ship_3_unit[1]
+  # end
 
   def test_it_can_validate_user_5th_ship_input
 
   end
 
-  def test_it_can_add_3rd_ship_coord_3_unit_ship
-    skip
-    player = Player.new
-
-    player.first_coord_3_unit
-    player.second_coord_3_unit
-    player.third_coord_3_unit
-    assert_includes player.board, player.ship_3_unit[2]
-  end
-
-  # def test_it_can_choose_a_shot_coord
+  # def test_it_can_add_3rd_ship_coord_3_unit_ship
   #   skip
   #   player = Player.new
   #
+  #   player.first_coord_3_unit
+  #   player.second_coord_3_unit
+  #   player.third_coord_3_unit
+  #   assert_includes player.board, player.ship_3_unit[2]
   # end
 end
