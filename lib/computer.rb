@@ -38,37 +38,37 @@ class Computer
   end
 
   def second_coord_2_unit
-    coord = @ship_2_unit[0]
-    coord_2 = @second_coord[coord].sample
+    coord_1 = @ship_2_unit[0]
+    coord_2 = @second_coord[coord_1].sample
     @ship_2_unit << coord_2
   end
 
   def first_coord_3_unit
-    coord_1 = @board.sample
-    if @ship_2_unit.include?(coord_1)
+    coord_3 = @board.sample
+    if @ship_2_unit.include?(coord_3)
       first_coord_3_unit
     else
-      @ship_3_unit << coord_1
+      @ship_3_unit << coord_3
     end
   end
 
   def second_coord_3_unit
-    coord = @ship_3_unit[0]
-    coord_2 = @second_coord[coord].sample
-    if @ship_2_unit.include?(coord_2)
+    coord_3 = @ship_3_unit[0]
+    coord_4 = @second_coord[coord_3].sample
+    if @ship_2_unit.include?(coord_4)
       second_coord_3_unit
     else
-      @ship_3_unit << coord_2
+      @ship_3_unit << coord_4
     end
   end
 
   def third_coord_3_unit
-    coord = @ship_3_unit.sort
-    coord_3 = @third_coord[coord].sample
-    if @ship_2_unit.include?(coord_3)
+    coord_4 = @ship_3_unit.sort
+    coord_5 = @third_coord[coord_4].sample
+    if @ship_2_unit.include?(coord_5)
       third_coord_3_unit
     else
-      @ship_3_unit << coord_3
+      @ship_3_unit << coord_5
     end
   end
 end
