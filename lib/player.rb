@@ -1,5 +1,5 @@
 class Player
-  attr_reader :board, :input, :ship_2_unit, :ship_3_unit
+  attr_reader :board, :ship_2_unit, :ship_3_unit
 
   def initialize
     @board = ['A1', 'A2', 'A3', 'A4',
@@ -7,7 +7,7 @@ class Player
               'C1', 'C2', 'C3', 'C4',
               'D1', 'D2', 'D3', 'D4']
 
-    @input = input
+    # @input = input
 
     @ship_2_unit = []
 
@@ -47,14 +47,13 @@ class Player
   def first_coord_3_unit(input)
     coord_3 = input.upcase
     if coord_3_valid?(coord_3)
-      @ship_3_unit << coord_1
+      @ship_3_unit << coord_3
     else
       first_coord_3_unit
     end
   end
 
   def second_coord_3_unit(input)
-    # coord_3 = @ship_3_unit[0]
     coord_4 = input.upcase
     if coord_4_valid?(input)
       @ship_3_unit << coord_4
@@ -114,7 +113,9 @@ class Player
 
   def coord_5_valid?(input)
     input = input.upcase
+    coord_4 = @third_coord[coord_4]
     if @board.include?(input) && !@ship_2_unit.include?(input) &&
+      @third_coord[coord_4].include?(input)
     end
   end
 
