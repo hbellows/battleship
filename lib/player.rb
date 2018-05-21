@@ -34,81 +34,90 @@ class Player
               }
   end
 
-  def validate_1st_input(input)
-    input = input.upcase
-    if @board.include?(input)
-      return true
-    else
-      return false
-    end
-  end
-
   def first_coord_2_unit(input)
-    coord_1 = input
-    @ship_2_unit << coord_1 if validate_1st_input(input)
-  end
-
-  def validate_2nd_input(input)
-    new_input = input.upcase
-    coord_1 = @ship_2_unit[0]
-    if @second_coord[coord_1].include?(new_input)
-      return true
-    else
-      return false
-    end
+    coord_1 = input.upcase
+    @ship_2_unit << coord_1 if coord_1_valid?(input)
   end
 
   def second_coord_2_unit(input)
-    coord_2 = input
-    @ship_2_unit << coord_2 if validate_2nd_input(input)
-  end
-
-  def validate_3rd_input(input)
-    # needs to validate input is on the board (validate_1st_input),
-    # AND is NOT in the @ship_2_unit array
-    input = input.upcase
-    if input.validate_1st_input
-    end
+    coord_2 = input.upcase
+    @ship_2_unit << coord_2 if coord_2_valid?(input)
   end
 
   def first_coord_3_unit(input)
-    coord_1 = input.upcase
-    if @ship_2_unit.include?(coord_1)
+    coord_3 = input.upcase
+    if @ship_2_unit.include?(coord_3)
       first_coord_3_unit
     else
-      @ship_3_unit << coord_1
+      @ship_3_unit << coord_1 if coord_3_valid?(input)
     end
-  end
-
-  def validate_4th_input
-    # needs to validate the input is on the board (validate_1st_input),
-    # AND is NOT in the @ship_2_unit array (validate_3rd_input),
-    # AND is in the second_coord hash/array
   end
 
   def second_coord_3_unit(input)
-    coord = @ship_3_unit[0]
-    coord_2 = input
-    if @ship_2_unit.include?(coord_2)
+    coord_3 = @ship_3_unit[0]
+    coord_4 = input.upcase
+    if @ship_2_unit.include?(coord_4)
       second_coord_3_unit
     else
-      @ship_3_unit << coord_2
+      @ship_3_unit << coord_4 if coord_4_valid?(input)
     end
   end
 
-  def validate_5th_input
-    # needs to validate the input is on the board (validate_1st_input)
-    # AND is NOT in the @ship_2_unit array (validate_3rd_input)
-    # AND is in the @third_coord hash/array
-  end
-
-  def third_coord_3_unit
+  def third_coord_3_unit(input)
     coord = @ship_3_unit.sort
     coord_3 = @third_coord[coord].sample
     if @ship_2_unit.include?(coord_3)
       third_coord_3_unit
     else
-      @ship_3_unit << coord_3
+      @ship_3_unit << coord_3 if coord_5_valid?(input)
     end
   end
+end
+
+
+def coord_1_valid?(input)
+  input = input.upcase
+  if @board.include?(input)
+    return true
+  else
+    return false
+  end
+end
+
+def coord_2_valid?(input)
+  input = input.upcase
+  coord_1 = @ship_2_unit[0]
+  if @board.include?(input) && @second_coord[coord_1].include?(input)
+    return true
+  else
+    return false
+  end
+end
+
+
+def coord_3_valid?(input)
+  input = input.upcase
+  if @board.include?(input) && !@ship_2_unit.include?(input)
+    return true
+  else
+    return false
+  end
+end
+
+def coord_4_valid?(input)
+  input = input.upcase
+  coord_3 = @ship_3_unit[0]
+  if @board.include?(input) && !@ship_2_unit.include?(input) &&
+    @third_coord[coord_3].include?(input)
+    return true
+  else
+    return false
+  end
+end
+
+def coord_5_valid?(input)
+  input = input.upcase
+  if @board.include?(input) && !@ship_2_unit.include?(input) &&
+
+
 end
