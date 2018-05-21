@@ -17,8 +17,8 @@ class PlayerTest < Minitest::Test
     # skip
     player = Player.new
 
-    assert player.validate_1st_input('A3')
-    refute player.validate_1st_input('z23')
+    assert player.coord_on_the_board('A3')
+    refute player.coord_on_the_board('z23')
   end
 
   def test_it_can_add_1st_ship_coord_2_unit_ship
@@ -49,6 +49,11 @@ class PlayerTest < Minitest::Test
   end
 
   def test_it_can_validate_user_3rd_ship_input
+    skip
+    player = Player.new
+
+    player.first_coord_3_unit('B1')
+    assert player.validate_3rd_input
 
   end
 
