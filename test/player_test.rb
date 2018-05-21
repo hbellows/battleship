@@ -93,7 +93,7 @@ class PlayerTest < Minitest::Test
   end
 
   def test_it_can_add_2nd_ship_coord_3_unit_ship
-    skip
+    # skip
     player = Player.new
 
     player.first_coord_3_unit('A2')
