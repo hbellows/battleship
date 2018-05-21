@@ -7,8 +7,6 @@ class Player
               'C1', 'C2', 'C3', 'C4',
               'D1', 'D2', 'D3', 'D4']
 
-    # @input = input
-
     @ship_2_unit = []
 
     @ship_3_unit = []
@@ -54,21 +52,22 @@ class Player
   end
 
   def second_coord_3_unit(input)
+    # require "pry"; binding.pry
     coord_4 = input.upcase
-    if coord_4_valid?(input)
+    if coord_4_valid?(coord_4)
       @ship_3_unit << coord_4
-    else
-      second_coord_3_unit
+    # else
+    #   second_coord_3_unit
     end
   end
 
   def third_coord_3_unit(input)
-    coord_4 = @ship_3_unit.sort
+    # coord_4 = @ship_3_unit.sort
     coord_5 = input.upcase
     if coord_5_valid?(coord_5)
       @ship_3_unit << coord_5
-    else
-      third_coord_3_unit
+    # else
+    #   third_coord_3_unit
     end
   end
 
@@ -102,9 +101,10 @@ class Player
   end
 
   def coord_4_valid?(input)
+    coord_3 = @ship_3_unit[0]
     input = input.upcase
     if @board.include?(input) && !@ship_2_unit.include?(input) &&
-      @third_coord.include?(input)
+      @second_coord[coord_3].include?(input)
       return true
     else
       return false
@@ -113,9 +113,12 @@ class Player
 
   def coord_5_valid?(input)
     input = input.upcase
-    coord_4 = @third_coord[coord_4]
+    coord_4 = @ship_3_unit
     if @board.include?(input) && !@ship_2_unit.include?(input) &&
       @third_coord[coord_4].include?(input)
+      return true
+    else
+      false
     end
   end
 
