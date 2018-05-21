@@ -34,41 +34,16 @@ class Player
               }
   end
 
-  def validate_1st_input(input)
-    input = input.upcase
-    if @board.include?(input)
-      return true
-    else
-      return false
-    end
-  end
+
 
   def first_coord_2_unit(input)
     coord_1 = input
     @ship_2_unit << coord_1 if validate_1st_input(input)
   end
 
-  def validate_2nd_input(input)
-    new_input = input.upcase
-    coord_1 = @ship_2_unit[0]
-    if @second_coord[coord_1].include?(new_input)
-      return true
-    else
-      return false
-    end
-  end
-
   def second_coord_2_unit(input)
     coord_2 = input
     @ship_2_unit << coord_2 if validate_2nd_input(input)
-  end
-
-  def validate_3rd_input(input)
-    # needs to validate input is on the board (validate_1st_input),
-    # AND is NOT in the @ship_2_unit array
-    input = input.upcase
-    if input.validate_1st_input
-    end
   end
 
   def first_coord_3_unit(input)
@@ -111,4 +86,40 @@ class Player
       @ship_3_unit << coord_3
     end
   end
+end
+
+
+def coord_1_valid?(input)
+  input = input.upcase
+  if @board.include?(input)
+    return true
+  else
+    return false
+  end
+end
+
+def coord_2_valid?(input)
+  input = input.upcase
+  if @board.include?(input)
+    return true
+  else
+    return false
+  end
+end
+
+
+def coord_3_valid?(input)
+  # needs to validate input is on the board (validate_1st_input),
+  # AND is NOT in the @ship_2_unit array
+  input = input.upcase
+  if input.validate_1st_input
+  end
+end
+
+def coord_4_valid?
+
+end
+
+def coord_5_valid?
+
 end
