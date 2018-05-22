@@ -46,8 +46,8 @@ class Player
     coord_3 = input.upcase
     if coord_3_valid?(coord_3)
       @ship_3_unit << coord_3
-    else
-      first_coord_3_unit
+    # else
+    #   first_coord_3_unit
     end
   end
 
